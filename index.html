@@ -306,20 +306,22 @@
 }
 
 /* Couple ko central framing me zoom aur badhane ke liye */
-.couple-img {
-  position: absolute;
-  bottom: 12%; /* Text ko space dene ke liye thoda upar */
-  left: 50%;
-  transform: translateX(-50%) scale(1.18); /* Couple ko thoda aur bada karne ke liye scale */
-  transform-origin: bottom center;
-  z-index: 2;
-  width: 80%; /* Arch ke andar sahi proportional sizing */
-  height: auto;
-  max-height: 62%;
-  object-fit: contain;
-  filter: drop-shadow(0 10px 22px rgba(92, 29, 46, 0.15));
-}
+.couple-video {
+    position: absolute;
+    bottom: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
 
+    width: 80%;
+    height: 62%;
+
+    object-fit: contain;
+    object-position: center bottom;
+
+    filter: drop-shadow(0 10px 22px rgba(92, 29, 46, 0.15));
+    pointer-events: none;
+}
 /* Isse Welcome aur couple names ka text arch ke path ke theek beech me niche set hoga */
 .hero-text-overlay {
   position: relative;
@@ -898,9 +900,11 @@
     <section class="hero-section" id="hero">
       <div class="arch-couple-stage">
         <!-- Floral Arch reaching all the way to the bottom line -->
-        <img src="coup.png" alt="Floral Arch" class="floral-arch-img" />
+        <img src="c1oup.png" alt="Floral Arch" class="floral-arch-img" />
         <!-- Couple Image reaching the bottom line inside the Arch -->
-        <img src="couplee.png" alt="Bride and Groom" class="couple-img" />
+        <video class="couple-video" autoplay muted loop playsinline>
+    <source src="hero-video.mp4" type="video/mp4">
+        </video>
 
         <!-- Overlay Names positioned inside the lower frame above the red line -->
         <div class="hero-text-overlay">

@@ -276,67 +276,57 @@
 /* Container ko poore screen ki width aur flexible height dene ke liye */
 
 /* Container ko poore screen ki width aur flexible height dene ke liye */
-.arch-couple-stage {
-  position: relative;
-  width: 100vw; /* Poori screen width */
-  margin-left: calc(-50vw + 50%); /* Wrapper margins ko override karke screen edges tak stretch karega */
-  margin-right: calc(-50vw + 50%);
-  height: 86vh; /* Upar se niche tak lamba curve dene ke liye height badhayi hai */
-  min-height: 600px;
-  max-height: 780px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  overflow: visible; /* Arch ko edges se thoda nikalne ki freedom dene ke liye */
+
+.hero-section {
+    min-height: 100vh;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
 }
 
-/* Arch ka path bilkul edges (sides) ko touch karte hue curve banayega */
-.floral-arch-img {
-  position: absolute;
-  top: -5px; /* Top se bilkul touch karega */
-  left: 0;
-  width: 100vw; /* Screen ki poori chaudai */
-  height: 100%; /* Pura niche tak extension */
-  object-fit: fill; /* Curve ko tight and full range cover karne ke liye zoom */
-  z-index: 3;
-  pointer-events: none;
-  /* Visual depth ke liye edges par subtle shadow */
-  filter: drop-shadow(0 4px 15px rgba(92, 29, 46, 0.12));
+.hero-video-stage {
+    position: relative;
+    width: 100vw;
+    height: 89.8vh;
+    height: 89.8svh;
+    margin-left: calc(50% - 50vw);
+    overflow: hidden;
 }
 
-/* Couple ko central framing me zoom aur badhane ke liye */
-.couple-video {
+#hero-video {
     position: absolute;
-    bottom: 12%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;
-
-    width: 80%;
-    height: 62%;
-
-    object-fit: contain;
-    object-position: center bottom;
-
-    filter: drop-shadow(0 10px 22px rgba(92, 29, 46, 0.15));
-    pointer-events: none;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
 }
-/* Isse Welcome aur couple names ka text arch ke path ke theek beech me niche set hoga */
+
 .hero-text-overlay {
-  position: relative;
-  z-index: 5;
-  width: 100%;
-  padding: 50px 24px 20px; /* Neeche placement aur readability check */
-  background: linear-gradient(
-    to top,
-    rgba(255, 243, 245, 0.98) 0%,
-    rgba(255, 243, 245, 0.85) 60%,
-    transparent 100%
-  );
-  text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 5;
+    padding: 50px 15px 25px;
+    text-align: center;
+
+    background: linear-gradient(
+        to top,
+        rgba(255,243,245,0.95),
+        transparent
+    );
 }
 
+.hero-bottom-meta {
+    position: relative;
+    width: 100%;
+    margin-top: 0;
+    z-index: 5;
+}
     .welcome-line {
       font-size: 1.08rem;
       color: var(--text-muted);
@@ -898,33 +888,42 @@
 
     <!-- HERO SECTION: Arch & Couple Extending Down to Divider Line -->
     <section class="hero-section" id="hero">
-      <div class="arch-couple-stage">
-        <!-- Floral Arch reaching all the way to the bottom line -->
-        <img src="c1oup.png" alt="Floral Arch" class="floral-arch-img" />
-        <!-- Couple Image reaching the bottom line inside the Arch -->
-        <video class="couple-video" autoplay muted loop playsinline>
-    <source src="hero-video.mp4" type="video/mp4">
+
+    <div class="hero-video-stage">
+
+        <video
+            id="hero-video"
+            muted
+            playsinline
+            preload="auto"
+        >
+            <source src="hero-video.mp4" type="video/mp4">
         </video>
 
-        <!-- Overlay Names positioned inside the lower frame above the red line -->
         <div class="hero-text-overlay">
-          <p class="welcome-line" data-en="Welcome to the wedding of" data-hi="शुभ विवाह में आपका स्वागत है">
-            Welcome to the wedding of
-          </p>
-          <h1 class="couple-names">
-            <span data-en="Swati" data-hi="स्वाति">Swati</span>
-            <span class="amp">&amp;</span>
-            <span data-en="Shubham" data-hi="शुभम">Shubham</span>
-          </h1>
-        </div>
-      </div>
 
-      <!-- Divider Line & City right below the Arch/Couple bottom edge -->
-      <div class="hero-bottom-meta">
+            <p class="welcome-line"
+               data-en="Welcome to the wedding of"
+               data-hi="शुभ विवाह में आपका स्वागत है">
+                Welcome to the wedding of
+            </p>
+
+            <h1 class="couple-names">
+                <span data-en="Swati" data-hi="स्वाति">Swati</span>
+                <span class="amp">&amp;</span>
+                <span data-en="Shubham" data-hi="शुभम">Shubham</span>
+            </h1>
+
+        </div>
+
+    </div>
+
+    <div class="hero-bottom-meta">
         <div class="ornament-divider"><span>❖</span></div>
-        <p class="city-tag" data-en="SURAT" data-hi="सूरत">SURAT</p>
+        <p class="city-tag">SURAT</p>
         <div class="scroll-down">Scroll Down</div>
-      </div>
+    </div>
+
     </section>
 
     <!-- THE DATE SECTION -->
@@ -1283,11 +1282,25 @@
 
     let videoStarted = false;
 
-    function revealWebsite() {
-      overlay.classList.add('fade-out');
-      document.body.classList.remove('locked');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    const heroVideo = document.getElementById('hero-video');
+
+function revealWebsite() {
+
+    overlay.classList.add('fade-out');
+    document.body.classList.remove('locked');
+
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+
+    // Intro ke baad Hero Video automatically play
+    heroVideo.currentTime = 0;
+
+    heroVideo.play().catch(error => {
+        console.log("Hero video playback:", error);
+    });
+}
 
     overlay.addEventListener('click', (e) => {
       if (e.target === skipBtn) return;

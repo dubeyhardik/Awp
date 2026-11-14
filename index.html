@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Wedding Invitation | Priya & Amit</title>
+  <title>Wedding Invitation | Priya &amp; Amit</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -260,80 +260,52 @@
     }
 
     /* ==========================================
-       4. UPDATED HERO SECTION (TALL ARCH + COUPLE TO RED LINE)
+       4. HERO SECTION
        ========================================== */
     .hero-section {
       min-height: 100vh;
-      padding: 14px 10px 28px;
+      padding: 0;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
+      overflow: hidden;
       background: radial-gradient(circle at 50% 42%, #ffffff 0%, var(--bg-blush) 65%, var(--bg-blush-deep) 100%);
     }
 
-    /* Tall Stage reaching all the way down to the divider line */
-/* Container ko poore screen ki width aur flexible height dene ke liye */
+    .hero-video-stage {
+      position: relative;
+      width: 100%;
+      height: 72vh;
+      overflow: hidden;
+    }
 
-/* Container ko poore screen ki width aur flexible height dene ke liye */
+    #hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
 
-.hero-section {
-    min-height: 100vh;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    overflow: hidden;
-}
+    .hero-text-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 5;
+      padding: 40px 15px 20px;
+      text-align: center;
+      background: linear-gradient(to top, rgba(255,243,245,0.95), transparent);
+    }
 
-.hero-video-stage {
-    position: relative;
-    width: 100vw;
-    height: 89.8vh;
-    height: 89.8svh;
-    margin-left: calc(50% - 50vw);
-    overflow: hidden;
-}
-
-#hero-video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-}
-
-.hero-text-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 5;
-    padding: 50px 15px 25px;
-    text-align: center;
-
-    background: linear-gradient(
-        to top,
-        rgba(255,243,245,0.95),
-        transparent
-    );
-}
-
-.hero-bottom-meta {
-    position: relative;
-    width: 100%;
-    margin-top: 0;
-    z-index: 5;
-}
     .welcome-line {
       font-size: 1.08rem;
       color: var(--text-muted);
       letter-spacing: 0.5px;
       margin-bottom: 4px;
       font-weight: 600;
-      text-shadow: 0 1px 6px rgba(255, 255, 255, 0.95);
     }
 
     .couple-names {
@@ -341,7 +313,6 @@
       font-size: 3.5rem;
       color: var(--text-maroon);
       line-height: 1.02;
-      text-shadow: 0 2px 12px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 243, 245, 0.95);
     }
 
     .couple-names .amp {
@@ -351,12 +322,11 @@
       margin: 2px 0;
     }
 
-    /* Footer below the arch & couple stage */
     .hero-bottom-meta {
       position: relative;
       z-index: 5;
       width: 100%;
-      margin-top: 2px;
+      padding: 15px 0 20px;
     }
 
     .city-tag {
@@ -369,7 +339,7 @@
     }
 
     .scroll-down {
-      margin-top: 14px;
+      margin-top: 10px;
       font-family: var(--font-script);
       font-size: 1.85rem;
       color: var(--gold-dark);
@@ -538,7 +508,7 @@
     }
 
     /* ==========================================
-       8. NEW: "US, SO FAR" 5 COUPLE IMAGES (coupl.png)
+       8. "US, SO FAR" COUPLE GALLERY
        ========================================== */
     .couple-gallery-section {
       padding: 50px 0;
@@ -574,7 +544,6 @@
       text-align: center;
     }
 
-    /* Scalloped Royal Arch Frame in Soft Blush Pink */
     .jharokha-frame {
       width: 100%;
       height: 330px;
@@ -613,12 +582,21 @@
     }
 
     /* ==========================================
-       9. EVENTS TIMELINE
+       9. EVENTS TIMELINE (ZIG-ZAG FORMAT)
        ========================================== */
+    #events {
+      padding: 60px 16px;
+      text-align: center;
+      position: relative;
+    }
+
     .timeline-container {
       position: relative;
       margin-top: 30px;
       padding: 10px 0;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .timeline-container::before {
@@ -634,37 +612,51 @@
 
     .timeline-row {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      grid-template-columns: 1fr 30px 1fr;
       align-items: center;
-      margin-bottom: 48px;
+      gap: 12px;
+      margin-bottom: 40px;
       position: relative;
     }
 
+    .timeline-row.reverse {
+      direction: rtl;
+    }
+
+    .timeline-row.reverse > * {
+      direction: ltr;
+    }
+
     .timeline-diamond {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%) rotate(45deg);
       width: 12px;
       height: 12px;
       background: var(--bg-blush);
       border: 2px solid var(--gold-dark);
+      transform: rotate(45deg);
+      margin: auto;
       z-index: 2;
+      box-shadow: 0 0 8px rgba(197, 155, 39, 0.4);
     }
 
     .event-illust {
-      background: var(--card-bg);
-      border: 1px solid var(--border-rose);
-      border-radius: 16px;
-      padding: 18px 12px;
-      box-shadow: 0 6px 16px rgba(92, 29, 46, 0.06);
-      font-size: 3.2rem;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .event-illust img {
+      width: 100%;
+      max-width: 140px;
+      height: 180px;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 4px 10px rgba(92, 29, 46, 0.1));
     }
 
     .event-details {
       text-align: left;
-      padding: 0 6px;
+      padding: 4px;
     }
 
     .timeline-row.reverse .event-details {
@@ -673,363 +665,33 @@
 
     .event-date {
       font-family: var(--font-sans);
-      font-size: 0.7rem;
-      letter-spacing: 2px;
+      font-size: 0.65rem;
+      letter-spacing: 1.5px;
       color: var(--text-muted);
       text-transform: uppercase;
+      margin-bottom: 4px;
     }
 
     .event-title-script {
       font-family: var(--font-script);
-      font-size: 2.4rem;
+      font-size: 2.1rem;
       color: var(--gold-dark);
       line-height: 1.1;
-      margin: 4px 0;
+      margin: 2px 0;
     }
-/* ==============================
-   CELEBRATION SECTION
-============================== */
 
-#events {
-  padding: 80px 20px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-#events .script-heading {
-  font-size: clamp(2.3rem, 5vw, 3.5rem);
-  margin-bottom: 15px;
-}
-
-.ornament-divider {
-  margin: 20px 0 60px;
-}
-
-.ornament-divider span {
-  font-size: 1.5rem;
-}
-
-
-/* ==============================
-   TIMELINE CONTAINER
-============================== */
-
-.timeline-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  position: relative;
-}
-
-
-/* ==============================
-   TIMELINE ROW
-============================== */
-
-.timeline-row {
-  display: grid;
-  grid-template-columns: 1fr 40px 1fr;
-  align-items: center;
-  gap: 25px;
-  margin-bottom: 80px;
-  position: relative;
-}
-
-.timeline-row:last-child {
-  margin-bottom: 0;
-}
-
-
-/* Reverse Row */
-
-.timeline-row.reverse {
-  direction: rtl;
-}
-
-.timeline-row.reverse > * {
-  direction: ltr;
-}
-
-
-/* ==============================
-   EVENT IMAGES
-============================== */
-
-.event-illust {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  min-height: 280px;
-  position: relative;
-}
-
-.event-illust img {
-  width: 100%;
-  max-width: 250px;
-  height: 300px;
-  object-fit: contain;
-  display: block;
-  transition: transform 0.4s ease;
-}
-
-.event-illust img:hover {
-  transform: scale(1.06);
-}
-
-
-/* ==============================
-   TIMELINE DIAMOND
-============================== */
-
-.timeline-diamond {
-  width: 16px;
-  height: 16px;
-  background: #d4a64a;
-  transform: rotate(45deg);
-  margin: auto;
-  position: relative;
-  z-index: 2;
-  box-shadow: 0 0 12px rgba(212, 166, 74, 0.4);
-}
-
-
-/* ==============================
-   EVENT DETAILS
-============================== */
-
-.event-details {
-  text-align: left;
-  padding: 25px;
-}
-
-.event-date {
-  font-size: 0.85rem;
-  letter-spacing: 3px;
-  margin-bottom: 12px;
-  color: #c49b55;
-  font-weight: 600;
-}
-
-.event-title-script {
-  font-size: clamp(2rem, 4vw, 2.8rem);
-  margin: 10px 0;
-  color: #d4a64a;
-  line-height: 1.2;
-}
-
-.event-bilingual {
-  font-size: 1.1rem;
-  margin-bottom: 14px;
-}
-
-.event-venue {
-  font-size: 0.95rem;
-  margin-bottom: 18px;
-  line-height: 1.6;
-}
-
-
-/* ==============================
-   RSVP LINK
-============================== */
-
-.link-underline {
-  display: inline-block;
-  color: #d4a64a;
-  text-decoration: none;
-  font-size: 0.95rem;
-  position: relative;
-  padding-bottom: 4px;
-  transition: color 0.3s ease;
-}
-
-.link-underline::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 1px;
-  bottom: 0;
-  left: 0;
-  background: currentColor;
-  transform: scaleX(1);
-  transform-origin: left;
-  transition: transform 0.3s ease;
-}
-
-.link-underline:hover {
-  color: #f0c978;
-}
-
-.link-underline:hover::after {
-  transform: scaleX(0.5);
-}
-
-
-/* ==============================
-   TABLET RESPONSIVE
-============================== */
-
-@media (max-width: 768px) {
-
-  #events {
-    padding: 60px 15px;
-  }
-
-  .timeline-row {
-    grid-template-columns: 180px 25px 1fr;
-    gap: 12px;
-    margin-bottom: 55px;
-  }
-
-  .event-illust {
-    min-height: 220px;
-  }
-
-  .event-illust img {
-    max-width: 180px;
-    height: 230px;
-  }
-
-  .event-details {
-    padding: 12px;
-  }
-
-  .event-date {
-    font-size: 0.75rem;
-    letter-spacing: 2px;
-  }
-
-  .event-title-script {
-    font-size: 2rem;
-  }
-
-}
-
-
-/* ==============================
-   MOBILE RESPONSIVE
-============================== */
-
-@media (max-width: 600px) {
-
-  #events {
-    padding: 45px 10px;
-  }
-
-  #events .script-heading {
-    font-size: 2.3rem;
-  }
-
-  .ornament-divider {
-    margin: 15px 0 40px;
-  }
-
-  .timeline-row {
-    grid-template-columns: 115px 18px minmax(0, 1fr);
-    gap: 7px;
-    margin-bottom: 40px;
-  }
-
-  .timeline-row.reverse {
-    direction: ltr;
-  }
-
-  .event-illust {
-    min-height: 160px;
-    width: 100%;
-  }
-
-  .event-illust img {
-    width: 115px;
-    height: 165px;
-    object-fit: contain;
-  }
-
-  .timeline-diamond {
-    width: 11px;
-    height: 11px;
-  }
-
-  .event-details {
-    padding: 6px;
-    text-align: left;
-    min-width: 0;
-  }
-
-  .event-date {
-    font-size: 0.62rem;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
-  }
-
-  .event-title-script {
-    font-size: 1.65rem;
-    margin: 7px 0;
-  }
-
-  .event-bilingual {
-    font-size: 0.8rem;
-    margin-bottom: 9px;
-  }
-
-  .event-venue {
-    font-size: 0.75rem;
-    line-height: 1.5;
-    margin-bottom: 12px;
-  }
-
-  .link-underline {
-    font-size: 0.85rem;
-  }
-
-}
-
-
-/* ==============================
-   SMALL MOBILE
-============================== */
-
-@media (max-width: 380px) {
-
-  .timeline-row {
-    grid-template-columns: 95px 15px minmax(0, 1fr);
-    gap: 5px;
-  }
-
-  .event-illust img {
-    width: 95px;
-    height: 145px;
-  }
-
-  .event-title-script {
-    font-size: 1.45rem;
-  }
-
-  .event-date {
-    font-size: 0.56rem;
-  }
-
-  .event-bilingual {
-    font-size: 0.73rem;
-  }
-
-  .event-venue {
-    font-size: 0.7rem;
-  }
-
-  }
     .event-bilingual {
-      font-size: 1.15rem;
+      font-size: 0.95rem;
       font-weight: 600;
       color: var(--text-maroon);
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .event-venue {
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       font-style: italic;
       color: var(--text-muted);
+      margin-bottom: 8px;
     }
 
     /* ==========================================
@@ -1188,12 +850,10 @@
   <div id="intro-overlay">
     <button class="skip-btn" id="skip-btn">Skip Intro ✕</button>
     
-    <!-- Uploaded Video with muted attribute so video audio never plays -->
     <video id="intro-video" muted playsinline preload="auto">
       <source src="video1.mp4" type="video/mp4" />
     </video>
 
-    <!-- Tap Anywhere Prompt -->
     <div class="tap-prompt" id="tap-prompt">
       <div class="tap-circle">
         <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -1202,12 +862,10 @@
     </div>
   </div>
 
-  <!-- Optional Background Music (Separate from muted video) -->
   <audio id="bg-music" loop>
     <source src="music.mp3" type="audio/mpeg" />
   </audio>
 
-  <!-- Floating Language & Music Controls -->
   <div class="floating-controls">
     <button class="lang-btn" id="lang-toggle" title="Switch Language">हिं</button>
     <button class="music-btn" id="music-toggle" title="Play/Pause Music">⏸</button>
@@ -1218,44 +876,30 @@
        ======================================================== -->
   <div class="invitation-wrapper">
 
-    <!-- HERO SECTION: Arch & Couple Extending Down to Divider Line -->
+    <!-- HERO SECTION -->
     <section class="hero-section" id="hero">
-
-    <div class="hero-video-stage">
-
-        <video
-            id="hero-video"
-            muted
-            playsinline
-            preload="auto"
-        >
-            <source src="hero-video.mp4" type="video/mp4">
+      <div class="hero-video-stage">
+        <video id="hero-video" muted playsinline preload="auto">
+          <source src="hero-video.mp4" type="video/mp4">
         </video>
 
         <div class="hero-text-overlay">
-
-            <p class="welcome-line"
-               data-en="Welcome to the wedding of"
-               data-hi="शुभ विवाह में आपका स्वागत है">
-                Welcome to the wedding of
-            </p>
-
-            <h1 class="couple-names">
-                <span data-en="Priya" data-hi="स्वाति">Priya</span>
-                <span class="amp">&amp;</span>
-                <span data-en="Shubham" data-hi="शुभम">Amit</span>
-            </h1>
-
+          <p class="welcome-line" data-en="Welcome to the wedding of" data-hi="शुभ विवाह में आपका स्वागत है">
+            Welcome to the wedding of
+          </p>
+          <h1 class="couple-names">
+            <span data-en="Priya" data-hi="प्रिया">Priya</span>
+            <span class="amp">&amp;</span>
+            <span data-en="Amit" data-hi="अमित">Amit</span>
+          </h1>
         </div>
+      </div>
 
-    </div>
-
-    <div class="hero-bottom-meta">
+      <div class="hero-bottom-meta">
         <div class="ornament-divider"><span>❖</span></div>
         <p class="city-tag">SURAT</p>
         <div class="scroll-down">Scroll Down</div>
-    </div>
-
+      </div>
     </section>
 
     <!-- THE DATE SECTION -->
@@ -1303,14 +947,14 @@
       </p>
 
       <div class="parent-block">
-        <h3 class="bride-groom-title" data-en="Priya Dubey" data-hi="स्वाति दुबे">Priya Dubey</h3>
+        <h3 class="bride-groom-title" data-en="Priya Dubey" data-hi="प्रिया दुबे">Priya Dubey</h3>
         <p class="parent-sub">DAUGHTER OF<br>SHRI MANIKANT DUBEY</p>
       </div>
 
       <p class="script-heading" style="font-size: 2.2rem;">with</p>
 
       <div class="parent-block">
-        <h3 class="bride-groom-title" data-en="Shubham Tiwari" data-hi="शुभम तिवारी">Shubham Tiwari</h3>
+        <h3 class="bride-groom-title" data-en="Amit Tiwari" data-hi="अमित तिवारी">Amit Tiwari</h3>
         <p class="parent-sub">SON OF<br>SHRI SATYAPRAKSH TIWARI</p>
       </div>
 
@@ -1332,7 +976,7 @@
       <div class="blessings-card">
         <h4>WITH BLESSINGS FROM</h4>
         <div class="blessings-list">
-          <p>Shri Maniikant Dubey</p>
+          <p>Shri Manikant Dubey</p>
           <p>Shri Vishnukant Dubey</p>
           <p>Shri Tinku Dubey</p>
         </div>
@@ -1349,9 +993,7 @@
       </div>
     </section>
 
-    <!-- ========================================================
-         NEW SECTION: "US, SO FAR" - 5 COUPLE IMAGES (coupl.png)
-         ======================================================== -->
+    <!-- "US, SO FAR" GALLERY SECTION -->
     <section class="couple-gallery-section" id="us-so-far">
       <p class="team-quote">
         —always as a team. We invite<br>you to celebrate our union
@@ -1361,43 +1003,24 @@
       <div class="ornament-divider"><span>🪔</span></div>
 
       <div class="gallery-slider">
-        <!-- Couple Image 1 -->
         <div class="gallery-item">
-          <div class="jharokha-frame">
-            <img src="coupl.png" alt="Swati & Shubham 1" />
-          </div>
+          <div class="jharokha-frame"><img src="coupl.png" alt="Amit &amp; Priya 1" /></div>
           <p class="gallery-caption">Amit &amp; Priya</p>
         </div>
-
-        <!-- Couple Image 2 -->
         <div class="gallery-item">
-          <div class="jharokha-frame">
-            <img src="coupl.png" alt="Swati & Shubham 2" />
-          </div>
+          <div class="jharokha-frame"><img src="coupl.png" alt="Amit &amp; Priya 2" /></div>
           <p class="gallery-caption">Amit &amp; Priya</p>
         </div>
-
-        <!-- Couple Image 3 -->
         <div class="gallery-item">
-          <div class="jharokha-frame">
-            <img src="coupl.png" alt="Swati & Shubham 3" />
-          </div>
+          <div class="jharokha-frame"><img src="coupl.png" alt="Amit &amp; Priya 3" /></div>
           <p class="gallery-caption">Amit &amp; Priya</p>
         </div>
-
-        <!-- Couple Image 4 -->
         <div class="gallery-item">
-          <div class="jharokha-frame">
-            <img src="coupl.png" alt="Swati & Shubham 4" />
-          </div>
+          <div class="jharokha-frame"><img src="coupl.png" alt="Amit &amp; Priya 4" /></div>
           <p class="gallery-caption">Amit &amp; Priya</p>
         </div>
-
-        <!-- Couple Image 5 -->
         <div class="gallery-item">
-          <div class="jharokha-frame">
-            <img src="coupl.png" alt="Swati & Shubham 5" />
-          </div>
+          <div class="jharokha-frame"><img src="coupl.png" alt="Amit &amp; Priya 5" /></div>
           <p class="gallery-caption">Amit &amp; Priya</p>
         </div>
       </div>
@@ -1405,81 +1028,62 @@
       <p class="swipe-hint">Swipe to see more</p>
     </section>
 
-    <!-- WEDDING EVENTS TIMELINE -->
+    <!-- WEDDING EVENTS TIMELINE (PROPER ZIG-ZAG) -->
     <section id="events">
+      <h2 class="script-heading">The celebrations</h2>
+      <div class="ornament-divider"><span>🪔</span></div>
 
-  <h2 class="script-heading">The celebrations</h2>
+      <div class="timeline-container">
 
-  <div class="ornament-divider">
-    <span>🪔</span>
-  </div>
+        <!-- 1. MEHENDI -->
+        <div class="timeline-row">
+          <div class="event-illust">
+            <img src="mehendi.png" alt="Mehendi Bride">
+          </div>
+          <div class="timeline-diamond"></div>
+          <div class="event-details">
+            <p class="event-date">TUE, 8 DEC 2026</p>
+            <h3 class="event-title-script">Mehendi</h3>
+            <p class="event-bilingual">Mehendi • मेहंदी</p>
+            <p class="event-venue">At Family Residence</p>
+            <a href="#rsvp" class="link-underline">RSVP</a>
+          </div>
+        </div>
 
-  <div class="timeline-container">
+        <!-- 2. SANGEET (REVERSE ZIG-ZAG) -->
+        <div class="timeline-row reverse">
+          <div class="event-illust">
+            <img src="sangeet.png" alt="Shehnai Musician">
+          </div>
+          <div class="timeline-diamond"></div>
+          <div class="event-details">
+            <p class="event-date">TUE, 8 DEC 2026</p>
+            <h3 class="event-title-script">Sangeet</h3>
+            <p class="event-bilingual">Sangeet • संगीत</p>
+            <p class="event-venue">At Family Residence</p>
+            <a href="#rsvp" class="link-underline">RSVP</a>
+          </div>
+        </div>
 
-    <!-- MEHENDI -->
-    <div class="timeline-row">
+        <!-- 3. SHUBH VIVAH -->
+        <div class="timeline-row">
+          <div class="event-illust">
+            <img src="wedding.png" alt="Bride and Groom">
+          </div>
+          <div class="timeline-diamond"></div>
+          <div class="event-details">
+            <p class="event-date">WED, 9 DEC 2026</p>
+            <h3 class="event-title-script">Shubh Vivah</h3>
+            <p class="event-bilingual">Wedding • शुभ विवाह</p>
+            <p class="event-venue">Jamna Baa Party Plot, Surat</p>
+            <a href="#rsvp" class="link-underline">RSVP</a>
+          </div>
+        </div>
 
-      <div class="event-illust">
-        <img src="mehendi.png" alt="Mehendi Bride">
       </div>
-
-      <div class="timeline-diamond"></div>
-
-      <div class="event-details">
-        <p class="event-date">TUE, 8 DEC 2026</p>
-        <h3 class="event-title-script">Mehendi</h3>
-        <p class="event-bilingual">Mehendi • मेहंदी</p>
-        <p class="event-venue">At Family Residence</p>
-        <a href="#rsvp" class="link-underline">RSVP</a>
-      </div>
-
-    </div>
-
-
-    <!-- SANGEET -->
-    <div class="timeline-row reverse">
-
-      <div class="event-details">
-        <p class="event-date">TUE, 8 DEC 2026</p>
-        <h3 class="event-title-script">Sangeet</h3>
-        <p class="event-bilingual">Sangeet • संगीत</p>
-        <p class="event-venue">At Family Residence</p>
-        <a href="#rsvp" class="link-underline">RSVP</a>
-      </div>
-
-      <div class="timeline-diamond"></div>
-
-      <div class="event-illust">
-        <img src="sangeet.png" alt="Shehnai Musician">
-      </div>
-
-    </div>
-
-
-    <!-- SHUBH VIVAH -->
-    <div class="timeline-row">
-
-      <div class="event-illust">
-        <img src="wedding.png" alt="Bride and Groom">
-      </div>
-
-      <div class="timeline-diamond"></div>
-
-      <div class="event-details">
-        <p class="event-date">WED, 9 DEC 2026</p>
-        <h3 class="event-title-script">Shubh Vivah</h3>
-        <p class="event-bilingual">Wedding • शुभ विवाह</p>
-        <p class="event-venue">Jamna Baa Party Plot, Surat</p>
-        <a href="#rsvp" class="link-underline">RSVP</a>
-      </div>
-
-    </div>
-
-  </div>
-
     </section>
 
-    <!-- COLOUR PALETTE / DRESS CODE -->
+    <!-- DRESS CODE COLOUR PALETTE -->
     <section id="dress-code">
       <div class="ornament-divider"><span>❖</span></div>
       <p style="font-size: 1.25rem; margin-bottom: 24px;">
@@ -1565,9 +1169,7 @@
       </a>
     </section>
 
-    <!-- ========================================================
-         LAST SECTION - RSVP (WHATSAPP INTEGRATED)
-         ======================================================== -->
+    <!-- RSVP SECTION -->
     <section id="rsvp">
       <h2 class="script-heading">RSVP</h2>
       <div class="ornament-divider"><span>❖</span></div>
@@ -1595,7 +1197,7 @@
           <label for="guest-attending">Will you be attending? *</label>
           <select id="guest-attending" class="form-control" required>
             <option value="Joyfully Attending">Joyfully Attending ✨</option>
-            <option value="Sending Warm Wishes from Afar">Regretfully Unable to Attend</option>
+            <option value="Regretfully Unable to Attend">Regretfully Unable to Attend</option>
           </select>
         </div>
 
@@ -1624,9 +1226,7 @@
 
   </div>
 
-  <!-- ========================================================
-       JAVASCRIPT: MUTED INTRO VIDEO, COUNTDOWN, LANG & RSVP
-       ======================================================== -->
+  <!-- JAVASCRIPT -->
   <script>
     const overlay = document.getElementById('intro-overlay');
     const video = document.getElementById('intro-video');
@@ -1634,32 +1234,21 @@
     const skipBtn = document.getElementById('skip-btn');
     const bgMusic = document.getElementById('bg-music');
     const musicToggle = document.getElementById('music-toggle');
-
-    // Enforce muted audio on the intro video at all times
-    video.muted = true;
-    video.volume = 0;
-
-    let videoStarted = false;
-
     const heroVideo = document.getElementById('hero-video');
 
-function revealWebsite() {
+    video.muted = true;
+    video.volume = 0;
+    let videoStarted = false;
 
-    overlay.classList.add('fade-out');
-    document.body.classList.remove('locked');
-
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-
-    // Intro ke baad Hero Video automatically play
-    heroVideo.currentTime = 0;
-
-    heroVideo.play().catch(error => {
+    function revealWebsite() {
+      overlay.classList.add('fade-out');
+      document.body.classList.remove('locked');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      heroVideo.currentTime = 0;
+      heroVideo.play().catch(error => {
         console.log("Hero video playback:", error);
-    });
-}
+      });
+    }
 
     overlay.addEventListener('click', (e) => {
       if (e.target === skipBtn) return;
@@ -1667,13 +1256,10 @@ function revealWebsite() {
         videoStarted = true;
         tapPrompt.classList.add('hidden');
         skipBtn.style.display = 'block';
-
-        // Ensure video stays muted when playing
         video.muted = true;
         video.play().catch(() => {
           revealWebsite();
         });
-
         bgMusic.play().catch(() => {});
       }
     });
@@ -1686,7 +1272,6 @@ function revealWebsite() {
       revealWebsite();
     });
 
-    // Music Play/Pause Toggle
     musicToggle.addEventListener('click', () => {
       if (bgMusic.paused) {
         bgMusic.play().catch(() => {});
@@ -1697,7 +1282,6 @@ function revealWebsite() {
       }
     });
 
-    // Hindi / English Toggle
     let currentLang = 'en';
     const langBtn = document.getElementById('lang-toggle');
     langBtn.addEventListener('click', () => {
@@ -1708,7 +1292,6 @@ function revealWebsite() {
       });
     });
 
-    // Live Countdown Timer (Target: 9 Dec 2026)
     const weddingDate = new Date('2026-12-09T18:00:00+05:30').getTime();
     function updateCountdown() {
       const now = new Date().getTime();
@@ -1727,7 +1310,6 @@ function revealWebsite() {
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // WhatsApp RSVP Submission
     document.getElementById('rsvp-form').addEventListener('submit', function(e) {
       e.preventDefault();
       const hostWhatsAppNumber = '919876543210';
@@ -1739,7 +1321,7 @@ function revealWebsite() {
       const note = document.getElementById('guest-note').value.trim();
 
       const message =
-        `*Wedding RSVP - Swati & Shubham*\n\n` +
+        `*Wedding RSVP - Priya & Amit*\n\n` +
         `*Name:* ${name}\n` +
         `*Status:* ${status}\n` +
         `*Guests:* ${count}\n` +

@@ -686,7 +686,339 @@
       line-height: 1.1;
       margin: 4px 0;
     }
+/* ==============================
+   CELEBRATION SECTION
+============================== */
 
+#events {
+  padding: 80px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+#events .script-heading {
+  font-size: clamp(2.3rem, 5vw, 3.5rem);
+  margin-bottom: 15px;
+}
+
+.ornament-divider {
+  margin: 20px 0 60px;
+}
+
+.ornament-divider span {
+  font-size: 1.5rem;
+}
+
+
+/* ==============================
+   TIMELINE CONTAINER
+============================== */
+
+.timeline-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+
+/* ==============================
+   TIMELINE ROW
+============================== */
+
+.timeline-row {
+  display: grid;
+  grid-template-columns: 1fr 40px 1fr;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 80px;
+  position: relative;
+}
+
+.timeline-row:last-child {
+  margin-bottom: 0;
+}
+
+
+/* Reverse Row */
+
+.timeline-row.reverse {
+  direction: rtl;
+}
+
+.timeline-row.reverse > * {
+  direction: ltr;
+}
+
+
+/* ==============================
+   EVENT IMAGES
+============================== */
+
+.event-illust {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 280px;
+  position: relative;
+}
+
+.event-illust img {
+  width: 100%;
+  max-width: 250px;
+  height: 300px;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.event-illust img:hover {
+  transform: scale(1.06);
+}
+
+
+/* ==============================
+   TIMELINE DIAMOND
+============================== */
+
+.timeline-diamond {
+  width: 16px;
+  height: 16px;
+  background: #d4a64a;
+  transform: rotate(45deg);
+  margin: auto;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 0 12px rgba(212, 166, 74, 0.4);
+}
+
+
+/* ==============================
+   EVENT DETAILS
+============================== */
+
+.event-details {
+  text-align: left;
+  padding: 25px;
+}
+
+.event-date {
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+  color: #c49b55;
+  font-weight: 600;
+}
+
+.event-title-script {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  margin: 10px 0;
+  color: #d4a64a;
+  line-height: 1.2;
+}
+
+.event-bilingual {
+  font-size: 1.1rem;
+  margin-bottom: 14px;
+}
+
+.event-venue {
+  font-size: 0.95rem;
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+
+
+/* ==============================
+   RSVP LINK
+============================== */
+
+.link-underline {
+  display: inline-block;
+  color: #d4a64a;
+  text-decoration: none;
+  font-size: 0.95rem;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background: currentColor;
+  transform: scaleX(1);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.link-underline:hover {
+  color: #f0c978;
+}
+
+.link-underline:hover::after {
+  transform: scaleX(0.5);
+}
+
+
+/* ==============================
+   TABLET RESPONSIVE
+============================== */
+
+@media (max-width: 768px) {
+
+  #events {
+    padding: 60px 15px;
+  }
+
+  .timeline-row {
+    grid-template-columns: 180px 25px 1fr;
+    gap: 12px;
+    margin-bottom: 55px;
+  }
+
+  .event-illust {
+    min-height: 220px;
+  }
+
+  .event-illust img {
+    max-width: 180px;
+    height: 230px;
+  }
+
+  .event-details {
+    padding: 12px;
+  }
+
+  .event-date {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+  }
+
+  .event-title-script {
+    font-size: 2rem;
+  }
+
+}
+
+
+/* ==============================
+   MOBILE RESPONSIVE
+============================== */
+
+@media (max-width: 600px) {
+
+  #events {
+    padding: 45px 10px;
+  }
+
+  #events .script-heading {
+    font-size: 2.3rem;
+  }
+
+  .ornament-divider {
+    margin: 15px 0 40px;
+  }
+
+  .timeline-row {
+    grid-template-columns: 115px 18px minmax(0, 1fr);
+    gap: 7px;
+    margin-bottom: 40px;
+  }
+
+  .timeline-row.reverse {
+    direction: ltr;
+  }
+
+  .event-illust {
+    min-height: 160px;
+    width: 100%;
+  }
+
+  .event-illust img {
+    width: 115px;
+    height: 165px;
+    object-fit: contain;
+  }
+
+  .timeline-diamond {
+    width: 11px;
+    height: 11px;
+  }
+
+  .event-details {
+    padding: 6px;
+    text-align: left;
+    min-width: 0;
+  }
+
+  .event-date {
+    font-size: 0.62rem;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .event-title-script {
+    font-size: 1.65rem;
+    margin: 7px 0;
+  }
+
+  .event-bilingual {
+    font-size: 0.8rem;
+    margin-bottom: 9px;
+  }
+
+  .event-venue {
+    font-size: 0.75rem;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+
+  .link-underline {
+    font-size: 0.85rem;
+  }
+
+}
+
+
+/* ==============================
+   SMALL MOBILE
+============================== */
+
+@media (max-width: 380px) {
+
+  .timeline-row {
+    grid-template-columns: 95px 15px minmax(0, 1fr);
+    gap: 5px;
+  }
+
+  .event-illust img {
+    width: 95px;
+    height: 145px;
+  }
+
+  .event-title-script {
+    font-size: 1.45rem;
+  }
+
+  .event-date {
+    font-size: 0.56rem;
+  }
+
+  .event-bilingual {
+    font-size: 0.73rem;
+  }
+
+  .event-venue {
+    font-size: 0.7rem;
+  }
+
+  }
     .event-bilingual {
       font-size: 1.15rem;
       font-weight: 600;
